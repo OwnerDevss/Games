@@ -1,0 +1,110 @@
+/* Estilo Geral */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f8f9fa, #ffffff); /* Fundo claro */
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinha o conteúdo no topo para permitir rolagem */
+    min-height: 100vh; /* Garante a altura mínima do body */
+    overflow-y: auto; /* Permite rolagem vertical */
+}
+
+#results-container {
+    text-align: center;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+header h1 {
+    font-size: 1.8em;
+    color: #d9534f; /* Vermelho */
+    margin-bottom: 20px;
+}
+
+#results-list-container {
+    flex: 1; /* Faz o container ocupar o espaço disponível */
+    overflow-y: auto; /* Adiciona rolagem vertical para conteúdo longo */
+    margin-bottom: 20px;
+    padding-right: 10px; /* Espaço para a barra de rolagem */
+    max-height: 70vh; /* Limita a altura para evitar que ultrapasse a tela */
+}
+
+#results-list {
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.result-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+.result-item p {
+    margin: 5px 0;
+    font-size: 1.1em;
+}
+
+/* Respostas incorretas */
+.result-item .incorrect-answer {
+    color: #d9534f; /* Vermelho */
+    font-weight: bold;
+}
+
+/* Respostas corretas */
+.result-item .correct-answer {
+    color: #5cb85c; /* Verde */
+    font-weight: bold;
+}
+
+/* Botão de Reiniciar */
+.restart-button {
+    background-color: #0077cc; /* Azul */
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    border-radius: 50px;
+    font-size: 1.2em;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.restart-button:hover {
+    background-color: #005fa3; /* Azul mais escuro */
+    transform: scale(1.05);
+}
+
+.restart-button:active {
+    background-color: #003f73; /* Azul ainda mais escuro */
+    transform: scale(1);
+}
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .view-errors-button {
+        font-size: 1em; /* Ajusta o tamanho da fonte */
+        padding: 12px 18px; /* Ajusta o espaçamento interno */
+        margin-top: 15px; /* Reduz o espaçamento superior */
+    }
+}
+
+@media (max-width: 480px) {
+    .view-errors-button {
+        font-size: 0.9em; /* Reduz o tamanho da fonte ainda mais */
+        padding: 10px 16px; /* Ajusta o espaçamento interno */
+    }
+}
