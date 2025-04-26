@@ -204,3 +204,42 @@ button:disabled {
     color: white; /* Texto branco para contraste */
     border: 2px solid #004080; /* Azul ainda mais escuro */
 }
+/* Layout responsivo para o botão "Ver Questões Erradas" */
+.view-errors-button {
+    display: inline-block;
+    background-color: #ff6f61; /* Cor de destaque (vermelho suave) */
+    color: #fff; /* Texto branco */
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 15px;
+}
+
+.view-errors-button:hover {
+    background-color: #e05549; /* Vermelho mais escuro ao passar o mouse */
+    transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+}
+
+.view-errors-button:active {
+    background-color: #c6453b; /* Vermelho ainda mais escuro ao clicar */
+    transform: scale(1); /* Restaura o tamanho ao clicar */
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .view-errors-button {
+        font-size: 1em; /* Ajusta o tamanho da fonte */
+        padding: 8px 16px; /* Reduz o espaçamento interno */
+    }
+}
+
+@media (max-width: 480px) {
+    .view-errors-button {
+        font-size: 0.9em; /* Reduz o tamanho da fonte ainda mais */
+        padding: 6px 12px; /* Ajusta o espaçamento interno para telas muito pequenas */
+    }
+}
