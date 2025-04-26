@@ -189,6 +189,7 @@ const questions = [
     // Adicione mais 40 perguntas aqui para totalizar 60
 ];
 
+// Função para embaralhar um array
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -204,7 +205,8 @@ function getRandomQuestions() {
 
 // Variáveis globais
 let currentQuestionIndex = 0;
-let score = 0;
+let score = 0; // Armazena a pontuação
+let incorrectAnswers = []; // Armazena as respostas incorretas
 let selectedQuestions = getRandomQuestions(); // Seleciona 20 perguntas aleatórias
 
 // Elementos do DOM
@@ -217,8 +219,13 @@ const restartButton = document.getElementById("restart-button");
 
 // Iniciar o quiz
 function startQuiz() {
+    // Limpa o localStorage para um novo quiz
+    localStorage.removeItem("incorrectAnswers");
+    localStorage.removeItem("totalQuestions");
+
     currentQuestionIndex = 0;
-    score = 0;
+    score = 0; // Reseta a pontuação ao reiniciar o quiz
+    incorrectAnswers = []; // Reseta as respostas incorretas
     selectedQuestions = getRandomQuestions(); // Seleciona novas 20 perguntas
     showQuestion();
 }
@@ -263,7 +270,14 @@ function selectAnswer(button, selectedAnswer, currentQuestion) {
     // Verifica a resposta correta
     const correctAnswer = currentQuestion.answers[currentQuestion.correct];
     if (selectedAnswer === correctAnswer) {
-        score++; // Incrementa a pontuação se estiver correta
+        score++; // Incrementa a pontuação se a resposta estiver correta
+    } else {
+        // Adiciona a resposta incorreta à lista
+        incorrectAnswers.push({
+            question: currentQuestion.question,
+            selectedAnswer: selectedAnswer,
+            correctAnswer: correctAnswer
+        });
     }
 
     nextButton.classList.remove("hide"); // Exibe o botão "Próxima"
@@ -283,6 +297,12 @@ function showNextQuestion() {
 function showResult() {
     resetState();
     questionElement.classList.add("hide");
+
+    // Salvar respostas incorretas e total de perguntas no localStorage
+    localStorage.setItem("incorrectAnswers", JSON.stringify(incorrectAnswers));
+    localStorage.setItem("totalQuestions", selectedQuestions.length);
+
+    // Exibir a pontuação correta
     resultText.textContent = `Você acertou ${score} de ${selectedQuestions.length} perguntas!`;
     resultContainer.classList.remove("hide");
 }
